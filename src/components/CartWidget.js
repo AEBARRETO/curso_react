@@ -3,7 +3,7 @@ import Image from 'react-bootstrap/Image'
 
 const CartWidget = () =>{
   return (
-    <div class>
+    <div>
         <Image src="../carrito.png"/>
         <small className="text-muted"> 0</small> 
     </div>
