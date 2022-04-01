@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import ItemCount from './ItemCount';
 import ItemList from './ItemList';
-import {getProductos} from '../servicios';
+import {getProductos} from '../services/Productos';
 
 const onAdd = (cantidad)=>{
   console.log('aqui');

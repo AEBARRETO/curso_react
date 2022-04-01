@@ -11,3 +11,22 @@ const products = [{id:1,nombre:'IdeaPad 3i (15.6”, Intel)', precio:200000, cat
     })
 
   }
+  export const getProductosCategoria = (categoria)=>{
+    return new Promise((resolver,reject)=>{
+        setTimeout(()=>{
+          resolver(products.filter(prod=>prod.categoria===categoria));
+        },2000);
+    })
+
+  }
+
+
+  export const getProductosId=(id)=>{
+    return new Promise((resolver,reject)=>{
+      console.log('id'+id)
+      setTimeout(()=>{
+          resolver(products.find(prod=>prod.id===parseInt(id)));
+      },2000);
+  })
+}
+  
