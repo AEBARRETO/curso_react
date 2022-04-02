@@ -8,11 +8,8 @@ const ItemDetailContainer = ()=>{
 
     const {id} = useParams();
     console.log(id);
-    console.log('unos')
     useEffect(()=>{
-        console.log('dos')
         getProductosId(id).then((producto)=>{
-            console.log('tres')
             setProducto(producto)
             console.log(producto);
       }).catch((e)=>{console.log(e);});

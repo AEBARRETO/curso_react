@@ -3,25 +3,29 @@ import {Row,Col,Image, Button } from "react-bootstrap";
 const ItemDetail = ({producto})=>{
     console.log(producto)
 return (  
-    <Row  className="item">
-      <Col sm={3}>
-        <Image src={producto.img}></Image>
-      </Col>
-      <Col >
-        <h2>{producto.categoria}</h2>
-        <p>{producto.nombre}</p>
-        <Row className="buttonRow">
-           <Col style={{ textAlign: "right" }}>
-            <p>Price: {producto.precio}</p>
-            
-            <Button id="buy" variant="primary">
-                Comprar
-            </Button>
+    <Row>
+      <Col style={{ textAlign: "center" }} >
+        <Row>
+          <Col><h2>{producto.nombre}</h2></Col>
+        </Row>
+        <Row >
+          <Col>
+            <Image src={producto.img}></Image>
+          </Col>
+        </Row>
+        <Row>
+          <Col>Categoría: {producto.categoria}</Col>
+        </Row>
+        <Row> 
+            <Col >
+            <h1>Price: ${producto.precio}</h1>
+            <Button id="buy" variant="primary">Comprar</Button>
             
           </Col>
         </Row>
       </Col>
-    </Row>
+      </Row>
+   
     );
 }
 

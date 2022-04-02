@@ -1,22 +1,30 @@
 import { useState, useEffect } from "react";
 import ItemCount from './ItemCount';
 import ItemList from './ItemList';
-import {getProductos} from '../services/Productos';
+import {getProductos,getProductosCategoria} from '../services/Productos';
+import {useParams} from 'react-router-dom';
 
 const onAdd = (cantidad)=>{
   console.log('aqui');
 }
 const ItemListContainer = ({saludo}) =>{
   const [productos,setProductos] = useState([]);
-
-useEffect(()=>{
-  getProductos().then((products)=>{
-    setProductos(products)
-    console.log(products);
-  });
-
-
-},[]);
+  const {categoria} = useParams();
+  useEffect(()=>{
+    if(categoria){
+      getProductosCategoria(categoria).then((products)=>{
+        console.log("aaqui lalalal")
+        console.log(products);
+        setProductos(products)
+        
+      });
+    }else{
+      getProductos().then((products)=>{
+        setProductos(products)
+        console.log(products);
+      });
+    }
+  },[]);
 
   return (
     <div className="text-center">
