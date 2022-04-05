@@ -1,5 +1,5 @@
 import {Row,Col,Image, Button } from "react-bootstrap";
-//const Item = ({item}) =>{
+
 const ItemDetail = ({producto})=>{
     console.log(producto)
 return (  
@@ -18,7 +18,7 @@ return (
         </Row>
         <Row> 
             <Col >
-            <h1>Price: ${producto.precio}</h1>
+            <h1>Price: $ {producto.precio}</h1>
             <Button id="buy" variant="primary">Comprar</Button>
             
           </Col>
