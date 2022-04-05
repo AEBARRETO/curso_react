@@ -1,5 +1,10 @@
 import {Row,Col,Image, Button } from "react-bootstrap";
+import ItemCount from './ItemCount';
 
+    
+const onAdd = (cantidad)=>{
+  console.log('aqui');
+}
 const ItemDetail = ({producto})=>{
     console.log(producto)
 return (  
@@ -19,13 +24,11 @@ return (
         <Row> 
             <Col >
             <h1>Price: $ {producto.precio}</h1>
-            <Button id="buy" variant="primary">Comprar</Button>
-            
-          </Col>
+              <ItemCount inicial={1} stock={producto.stock} onAdd={onAdd}></ItemCount>
+            </Col>
         </Row>
       </Col>
       </Row>
-   
     );
 }
 
