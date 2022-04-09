@@ -1,12 +1,12 @@
-import Image from 'react-bootstrap/Image'
+import {Button } from 'react-bootstrap'
+import { FaShoppingCart  } from 'react-icons/fa'
 
 
 const CartWidget = () =>{
   return (
-    <div>
-        <Image src="../carrito.png"/>
-        <small className="text-muted"> 0</small> 
-    </div>
+    <Button variant="light rounded-pill">
+      <FaShoppingCart fontSize="25px" /> 0
+    </Button>
   );
 }
 

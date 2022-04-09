@@ -5,7 +5,7 @@ const Item = ({item}) =>{
     console.log(item);
     return(
         <Col>
-            <Card  style={{textAlign:'center', width: '20rem' }}>
+            <Card  style={{ width: '20rem' }}>
                 <Card.Header>{item.categoria}</Card.Header>
                 <Card.Img variant="top" src={item.img} />
                 <Card.Body>
