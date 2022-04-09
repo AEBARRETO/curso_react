@@ -1,6 +1,7 @@
-import {Row,Col,Image, Button } from "react-bootstrap";
+import {Row,Col,Image } from "react-bootstrap";
 import ItemCount from './ItemCount';
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
   
 const ItemDetail = ({producto})=>{
@@ -24,7 +25,7 @@ const ItemDetail = ({producto})=>{
               <Col >
                 Categoría: {producto.categoria}
                 <h1>Price: $ {producto.precio}</h1>
-                {cantidad===0?<ItemCount inicial={1} stock={producto.stock} onAdd={onAdd}></ItemCount>:<Button>Ir al Carrito</Button>}
+                {cantidad===0?<ItemCount inicial={1} stock={producto.stock} onAdd={onAdd}></ItemCount>:<Link className="btn btn-primary" to={'/cart'}>Terminar Compra</Link>}
               </Col>
           </Row>
         </Col>
