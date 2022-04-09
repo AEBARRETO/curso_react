@@ -6,17 +6,11 @@ const ItemList = ({productos=[]}) =>{
 
 
     return (
-    <Container>
-        <Row>
-             <Col/>
-            <Col>
-            {productos.map((e) => 
-            <Item key={e.id}  item={e} />
-            )}
-            </Col>
-            <Col/>
-        </Row>
-    </Container>
+        <Container>
+            <Row>  
+                {productos.map((e) => <Item key={e.id}  item={e} />)}
+            </Row>
+        </Container>
     );   
 }
 

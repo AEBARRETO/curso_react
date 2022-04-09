@@ -15,20 +15,15 @@ const ItemDetail = ({producto})=>{
       <Row>
         <Col style={{ textAlign: "center" }} >
           <Row>
-            <Col><h2>{producto.nombre}</h2></Col>
-          </Row>
-          <Row >
             <Col>
+              <h2>{producto.nombre}</h2>
               <Image src={producto.img}></Image>
             </Col>
           </Row>
-          <Row>
-            <Col>Categoría: {producto.categoria}</Col>
-          </Row>
           <Row> 
               <Col >
-              <h1>Price: $ {producto.precio}</h1>
-              {console.log('cantidad=>'+cantidad)}
+                Categoría: {producto.categoria}
+                <h1>Price: $ {producto.precio}</h1>
                 {cantidad===0?<ItemCount inicial={1} stock={producto.stock} onAdd={onAdd}></ItemCount>:<Button>Ir al Carrito</Button>}
               </Col>
           </Row>
