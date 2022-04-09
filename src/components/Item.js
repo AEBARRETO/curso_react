@@ -1,4 +1,4 @@
-import {Card, Button } from "react-bootstrap";
+import {Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 const Item = ({item}) =>{
@@ -15,12 +15,8 @@ const Item = ({item}) =>{
                 <Link className="btn btn-primary" to={'/productos/detalle/'+item.id}>Ver detalle de Producto</Link>
             </Card.Body>
             <Card.Footer>Stock Disponible {item.stock}</Card.Footer>
-        </Card>
-
-        
+        </Card>  
     );
-
-
 }
 
 export default Item;

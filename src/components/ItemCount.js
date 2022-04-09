@@ -32,8 +32,3 @@ const ItemCount = ({inicial=0,stock,onAdd}) =>{
 }
 
 export default ItemCount;
-
-{/*    <div>
-      
-        <Button onClick={()=>onAdd(count)}>Add</Button>
-    </div>*/}
