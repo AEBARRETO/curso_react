@@ -1,3 +1,6 @@
+import { collection, getDoc, getDocs } from "firebase/firestore";
+import fireStoreDB  from "./firebase"
+
 const products = [
   {id:1,nombre:'IdeaPad 3i (15.6”, Intel)', precio:200000, categoria:'Notebook',stock:10,img:"https://www.lenovo.com/medias/lenovo-laptop-ideapad-3-15-intel-gallery-1.png?context=bWFzdGVyfHJvb3R8MjIxNjM1fGltYWdlL3BuZ3xoMjIvaDkyLzEwNzU3MjQzOTI4NjA2LnBuZ3xhMjhmOWI5NmQ1ODE2YzIyN2RjZjg0YjU1MTIzYzAyNzY2Y2I3MTU4ZTAyNWI1MjQ5OTY4ZTFjMjBmMzYyNWI4"},
   {id:2,nombre:'ThinkBook Plus 2da Gen (Intel)', precio:279999, categoria:'Notebook',stock:10,img:"https://www.lenovo.com/medias/lenovo-laptop-thinkbook-plus-gen-2-intel-subseries-gallery-1.png?context=bWFzdGVyfHJvb3R8MjExNjYyfGltYWdlL3BuZ3xoOGYvaDYwLzExNjEzMDU4NTk2ODk0LnBuZ3wwOTc4ODQ0N2E2NTk0NzhhZDdkOTAwZmU4ZWE1OGE4MzYwMDdkYzExM2U0NjhmYjdhZTRlNzFhZjFlNTE0M2Nk"},
@@ -8,13 +11,22 @@ const products = [
 ];
 
 
-  export const getProductos = ()=>{
-    return new Promise((resolver,reject)=>{
+const colProductos = collection(fireStoreDB,'productos');
+
+
+
+ export const   getProductos =   ()=>{
+   /* return new Promise((resolver,reject)=>{
         setTimeout(()=>{
             resolver(products);
         },2000);
-    })
-
+    })*/
+        getDocs(colProductos).then( querySnapShot =>{
+          const prods =  querySnapShot.docs.map(doc => {
+            console.log(doc.data())
+             return {id: doc.id, ...doc.data()}
+           })
+        })
   }
   export const getProductosCategoria = (categoria)=>{
     return new Promise((resolver,reject)=>{

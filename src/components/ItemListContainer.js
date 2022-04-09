@@ -10,16 +10,15 @@ const ItemListContainer = ({saludo}) =>{
   useEffect(()=>{
     if(categoria){
       getProductosCategoria(categoria).then((products)=>{
-        console.log("aaqui lalalal")
-        console.log(products);
-        setProductos(products)
-        
+        setProductos(products) 
       });
     }else{
+      
       getProductos().then((products)=>{
+        console.log(products)
         setProductos(products)
-        console.log(products);
       });
+     
     }
   },[]);
 

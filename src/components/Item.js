@@ -2,7 +2,6 @@ import {Card, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 const Item = ({item}) =>{
-    console.log(item);
     return(
         <Col>
             <Card  style={{ width: '20rem' }}>
