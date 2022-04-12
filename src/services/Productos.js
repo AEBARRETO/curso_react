@@ -14,20 +14,16 @@ const products = [
 const colProductos = collection(fireStoreDB,'productos');
 
 
-
- export const   getProductos =   ()=>{
-   /* return new Promise((resolver,reject)=>{
-        setTimeout(()=>{
-            resolver(products);
-        },2000);
-    })*/
-        getDocs(colProductos).then( querySnapShot =>{
-          const prods =  querySnapShot.docs.map(doc => {
-            console.log(doc.data())
-             return {id: doc.id, ...doc.data()}
-           })
+  export const  getProductos =  async ()=>{
+    let prods = [];
+    await getDocs(colProductos).then(querySnapShot =>{
+       prods =  querySnapShot.docs.map(doc => {
+          return {id: doc.id, ...doc.data()}
         })
+    })
+    return prods;
   }
+
   export const getProductosCategoria = (categoria)=>{
     return new Promise((resolver,reject)=>{
         setTimeout(()=>{
@@ -36,7 +32,6 @@ const colProductos = collection(fireStoreDB,'productos');
     })
 
   }
-
 
   export const getProductosId=(id)=>{
     return new Promise((resolver,reject)=>{
