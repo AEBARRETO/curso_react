@@ -12,7 +12,7 @@ const products = [
     return new Promise((resolver,reject)=>{
         setTimeout(()=>{
             resolver(products);
-        },2000);
+        },300);
     })
 
   }
@@ -20,7 +20,7 @@ const products = [
     return new Promise((resolver,reject)=>{
         setTimeout(()=>{
           resolver(products.filter(prod=>prod.categoria===categoria));
-        },2000);
+        },300);
     })
 
   }
@@ -31,7 +31,7 @@ const products = [
       console.log('id'+id)
       setTimeout(()=>{
           resolver(products.find(prod=>prod.id===parseInt(id)));
-      },2000);
+      },300);
   })
 }
   

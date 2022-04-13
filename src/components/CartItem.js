@@ -1,9 +1,14 @@
 
 
-const CartItem = () =>{
+import {  Col } from "react-bootstrap";
+const CartItem = ({item}) =>{
 
     return (
-        <>item</>
+        <>
+            <Col>{item.nombre}</Col>
+            <Col>{item.categoria}</Col>
+            <Col>{item.seleccionado}</Col>
+        </>
     )
 
 }
