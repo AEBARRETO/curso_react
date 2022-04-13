@@ -1,10 +1,7 @@
 import Item from "./Item";
-import {Container, Row,Col } from "react-bootstrap";
+import {Container, Row} from "react-bootstrap";
 
 const ItemList = ({productos=[]}) =>{
-    console.log(productos);
-
-
     return (
         <Container>
             <Row>  

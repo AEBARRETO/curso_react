@@ -6,9 +6,11 @@ import { Link } from "react-router-dom";
   
 const ItemDetail = ({producto})=>{
   
-  const {agregarItem} = useContext(CartContext)
+  const {agregarItem,existeEnCarrito} = useContext(CartContext)
 
   const [cantidad,setCantidad] = useState(0); 
+
+  console.log(existeEnCarrito(producto.id))
 
   const onAdd = (knt)=>{
     setCantidad(knt);

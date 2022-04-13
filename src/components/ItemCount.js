@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Button, Col,Row } from 'react-bootstrap';
+import { Button, Col,Row} from 'react-bootstrap';
 
 const ItemCount = ({inicial=0,stock,onAdd}) =>{
     const [count,setCount] = useState(0); 

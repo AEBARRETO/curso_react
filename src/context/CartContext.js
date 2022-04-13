@@ -7,30 +7,24 @@ export const CartContextProvider = ({children}) =>{
     const [cart, setCart] = useState([])
 
     const agregarItem = (producto)=> {
-        console.log('aqui')
-        cart.map((item)=>{
-            if(item.id===producto.id){
-                item.seleccionado += producto.seleccionado;
-            }
-            return item;
-        })
-
-        console.log(cart);
-
         setCart([...cart,{...producto}])
     }
 
-    const eliminarItem = (product) =>{
-
-    }
+    const eliminarItem = (item) =>{
+        setCart(cart.filter((i)=>{return i.id !== item.id&&i}))
+     }
 
     const limpiarCart = ()=>{
         setCart([])
+    }
 
+    const existeEnCarrito = (id)=>{
+        console.log(id)
+        return false
     }
     
     return (
-        <Context.Provider value={{cart,agregarItem,eliminarItem,limpiarCart}}>
+        <Context.Provider value={{cart,agregarItem,eliminarItem,limpiarCart,existeEnCarrito}}>
             {children}
         </Context.Provider>
     )
