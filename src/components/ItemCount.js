@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Button, Col,Row } from 'react-bootstrap';
 
 const ItemCount = ({inicial=0,stock,onAdd}) =>{
-    const [count,setCount] = useState(inicial); 
+    const [count,setCount] = useState(0); 
     const increment = () =>{
         if(stock>count){
             setCount(count+1);

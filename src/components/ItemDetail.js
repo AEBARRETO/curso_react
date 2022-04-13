@@ -1,15 +1,19 @@
-import {Row,Col,Image } from "react-bootstrap";
+import {Row,Col,Image} from "react-bootstrap";
 import ItemCount from './ItemCount';
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { CartContext } from "../App";
 import { Link } from "react-router-dom";
-
   
 const ItemDetail = ({producto})=>{
+  const {cart, setCart} = useContext(CartContext);
+
+  console.log(cart);
+
   const [cantidad,setCantidad] = useState(0); 
 
   const onAdd = (knt)=>{
-    console.log('aqui: '+knt);
     setCantidad(knt);
+    setCart([...cart,{...producto, 'seleccionado':knt}])
   }
 
    return (  
