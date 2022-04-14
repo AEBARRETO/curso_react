@@ -9,15 +9,16 @@ import {CartContextProvider} from './context/CartContext';
 function App() {
   return (
    <CartContextProvider>
+    
+    <BrowserRouter>
     <NavBar/>
-      <BrowserRouter>
-        <Routes>
-          <Route path='/' element = {<ItemListContainer saludo={'Bienvenidos'}></ItemListContainer>}/>
-          <Route path='/categoria/:categoria'  element = {<ItemListContainer/>}/>
-          <Route path='/productos/detalle/:id' element = {<ItemDetailContainer/>}/>
-          <Route path='/cart' element = {<Cart/>}/>
-        </Routes>
-      </BrowserRouter>
+      <Routes>
+        <Route path='/' element = {<ItemListContainer saludo={'Bienvenidos'}></ItemListContainer>}/>
+        <Route path='/categoria/:categoria'  element = {<ItemListContainer/>}/>
+        <Route path='/productos/detalle/:id' element = {<ItemDetailContainer/>}/>
+        <Route path='/cart' element = {<Cart/>}/>
+      </Routes>
+    </BrowserRouter>
    </CartContextProvider>
 
   );

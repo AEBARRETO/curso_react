@@ -1,21 +1,22 @@
 
 import {Navbar,Container,Nav,Image} from 'react-bootstrap'
 import CartWidget from './CartWidget';
+import { NavLink } from 'react-router-dom';
 
 
 const NavBar = () =>{
     return (
       <Navbar bg="dark" variant='dark' expand="lg">
         <Container>
-          <Image src={'../logo.jpg'}></Image>
-          <Navbar.Brand href="/">Barreto´s Store</Navbar.Brand>
+        <NavLink to="/"><Image src={'../logo.jpg'}></Image></NavLink>
+          <NavLink to="/" className={'navbar-brand'}>Barreto´s Store</NavLink>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav  className="mr-auto">
-              <Nav.Link href="/" className={isActive =>"nav-link" + (!isActive ? " unselected" : "")} >Inicio</Nav.Link>
-              <Nav.Link href="/categoria/Notebook">Notebook</Nav.Link>
-              <Nav.Link href="/categoria/Celular">Celulares</Nav.Link>
-              <Nav.Link href="/categoria/Tablet">Tablets</Nav.Link>
+              <NavLink to="/"                    className="nav-link">Inicio</NavLink>
+              <NavLink to="/categoria/Notebook"  className="nav-link">Notebook</NavLink>
+              <NavLink to="/categoria/Celular"   className="nav-link">Celulares</NavLink>
+              <NavLink to="/categoria/Tablet"    className="nav-link">Tablets</NavLink>
             </Nav>
             <CartWidget/>
           </Navbar.Collapse>

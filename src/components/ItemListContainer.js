@@ -18,7 +18,7 @@ const ItemListContainer = ({saludo}) =>{
         setProductos(products);
       });
     }
-  },[]);
+  },[categoria]);
 
   return (
     <div className="text-center">

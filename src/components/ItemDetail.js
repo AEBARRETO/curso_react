@@ -7,10 +7,7 @@ import { Link } from "react-router-dom";
 const ItemDetail = ({producto})=>{
   
   const {agregarItem,existeEnCarrito} = useContext(CartContext)
-
-  const [cantidad,setCantidad] = useState(0); 
-
-  console.log(existeEnCarrito(producto.id))
+  const [cantidad,setCantidad] = useState(0)
 
   const onAdd = (knt)=>{
     setCantidad(knt);
@@ -28,9 +25,10 @@ const ItemDetail = ({producto})=>{
           </Row>
           <Row> 
               <Col >
+                 {console.log('Existe? '+existeEnCarrito(producto.id))}
                 Categoría: {producto.categoria}
                 <h1>Price: $ {producto.precio}</h1>
-                {cantidad===0?<ItemCount inicial={1} stock={producto.stock} onAdd={onAdd}></ItemCount>:<Link className="btn btn-primary" to={'/cart'}>Terminar Compra</Link>}
+                {(cantidad===0&&!existeEnCarrito(producto.id))?<ItemCount inicial={1} stock={producto.stock} onAdd={onAdd}></ItemCount>:<Link className="btn btn-primary" to={'/cart'}>Terminar Compra</Link>}
               </Col>
           </Row>
         </Col>

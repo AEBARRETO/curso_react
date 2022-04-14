@@ -6,7 +6,7 @@ const CartItem = ({item,eliminarItem}) =>{
             <Col>{item.nombre}</Col>
             <Col>{item.categoria}</Col>
             <Col>{item.seleccionado}</Col>
-            <Col><Button onClick={()=>eliminarItem(item)}> Eliminar</Button></Col>
+            <Col><Button onClick={()=>eliminarItem(item.id)}> Eliminar</Button></Col>
         </Row>
     )
 }

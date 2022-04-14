@@ -10,7 +10,6 @@ const ItemDetailContainer = ()=>{
     useEffect(()=>{
         getProductosId(id).then((producto)=>{
             setProducto(producto)
-            console.log(producto);
       }).catch((e)=>{console.log(e);});
       return (()=>{setProducto({});})
 
