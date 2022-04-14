@@ -2,7 +2,7 @@ import Item from "./Item";
 import {Container, Row} from "react-bootstrap";
 
 const ItemList = ({productos=[]}) =>{
-    return (
+   return (
         <Container>
             <Row>  
                 {productos.map((e) => <Item key={e.id}  item={e} />)}

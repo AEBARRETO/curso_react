@@ -10,12 +10,12 @@ const ItemListContainer = ({saludo}) =>{
   useEffect(()=>{
     if(categoria){
       getProductosCategoria(categoria).then((products)=>{
-        setProductos(products)
-        
+        setProductos(products) 
       });
     }else{
       getProductos().then((products)=>{
-        setProductos(products);
+        console.log(products)
+        setProductos(products)
       });
     }
   },[categoria]);
