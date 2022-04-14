@@ -8,8 +8,7 @@ const NavBar = () =>{
     return (
       <Navbar bg="dark" variant='dark' expand="lg">
         <Container>
-        <NavLink to="/"><Image src={'../logo.jpg'}></Image></NavLink>
-          <NavLink to="/" className={'navbar-brand'}>Barreto´s Store</NavLink>
+          <NavLink to="/" className={'navbar-brand'}><Image src={'../logo.jpg'}/>Barreto´s Store</NavLink>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav  className="mr-auto">

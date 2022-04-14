@@ -1,4 +1,4 @@
-import { FaShoppingCart  } from 'react-icons/fa'
+import { BsCart2,BsCartFill  } from 'react-icons/bs'
 import { useContext } from 'react';
 import CartContext from "../context/CartContext";
 import { NavLink } from 'react-router-dom';
@@ -9,7 +9,7 @@ const CartWidget = () =>{
 
   return (
     <NavLink variant="light rounded-pill" to="/cart"  >
-      <FaShoppingCart fontSize="25px" /> {cart.length}
+      {cart.length<=0?<BsCart2 fontSize="25px" />:<BsCartFill fontSize="25px"/>} {cart.length}
     </NavLink>
   );
 }
