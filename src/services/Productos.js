@@ -1,4 +1,4 @@
-import { collection, getDoc, getDocs,doc, limit, query, where } from "firebase/firestore";
+import { collection, getDoc, getDocs,doc, query, where } from "firebase/firestore";
 import fireStoreDB  from "./firebase"
 
 const products = [
@@ -38,9 +38,8 @@ const colProductos = collection(fireStoreDB,'productos');
   }
 
   export const getProductosId= async (id)=>{
-    const snap = await getDoc(doc(fireStoreDB, 'productos', id))
+    const snap = await getDoc(doc(fireStoreDB, 'productos', id)) 
     const prod =  {id: snap.id, ...snap.data()}
-    console.log(snap.data())
 
     return prod;
   }

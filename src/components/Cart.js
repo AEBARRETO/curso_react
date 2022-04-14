@@ -1,7 +1,8 @@
 import { useContext } from "react";
 import CartContext from "../context/CartContext";
 import CartItem from    './CartItem'
-import { Container,Col, Row, Button,thead} from "react-bootstrap";
+import { Container,Col, Row, Button} from "react-bootstrap";
+import { BsCartX } from 'react-icons/bs'
 
 
 const Cart =()=>{
@@ -18,15 +19,15 @@ const Cart =()=>{
             <Col></Col>
             <Col></Col>
             <Col></Col>
-            <Col><Button onClick={()=>limpiarCart()}> Limpiar Carrito</Button></Col>
+            <Col><Button onClick={()=>limpiarCart()}><BsCartX fontSize="25px"/> Vaciar </Button></Col>
         </Row>
         <Row clasName="showGrid">
-            <Col>Producto</Col>
-            <Col>Categoría</Col>
-            <Col>Cantidad</Col>
-            <Col>Precio</Col>
-            <Col>Total</Col>
-            <Col>Eliminar</Col>
+            <Col><b>Producto</b></Col>
+            <Col><b>Categoría</b></Col>
+            <Col><b>Cantidad</b></Col>
+            <Col><b>Precio</b></Col>
+            <Col><b>Total</b></Col>
+            <Col><b>Eliminar</b></Col>
         </Row>
           
         {cart.map((e) => <CartItem eliminarItem={eliminarItem} key={e.id}  item={e}> </CartItem>)}
