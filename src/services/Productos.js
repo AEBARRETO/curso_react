@@ -1,4 +1,4 @@
-import { collection, getDoc, getDocs } from "firebase/firestore";
+import { collection, getDoc, getDocs,doc, limit, query, where } from "firebase/firestore";
 import fireStoreDB  from "./firebase"
 
 const products = [
@@ -24,20 +24,24 @@ const colProductos = collection(fireStoreDB,'productos');
     return prods;
   }
 
-  export const getProductosCategoria = (categoria)=>{
-    return new Promise((resolver,reject)=>{
-        setTimeout(()=>{
-          resolver(products.filter(prod=>prod.categoria===categoria));
-        },300);
-    })
+  export const getProductosCategoria = async(categoria)=>{
+    const q = query (colProductos,where('categoria','==',categoria))
 
+    let prods = [];
+    await getDocs(q).then(querySnapShot =>{
+      console.log(querySnapShot.size)
+       prods =  querySnapShot.docs.map(doc => {
+          return {id: doc.id, ...doc.data()}
+        })
+    })
+    return prods;
   }
 
-  export const getProductosId=(id)=>{
-    return new Promise((resolver,reject)=>{
-      setTimeout(()=>{
-          resolver(products.find(prod=>prod.id===parseInt(id)));
-      },300);
-  })
-}
+  export const getProductosId= async (id)=>{
+    const snap = await getDoc(doc(fireStoreDB, 'productos', id))
+    const prod =  {id: snap.id, ...snap.data()}
+    console.log(snap.data())
+
+    return prod;
+  }
   
