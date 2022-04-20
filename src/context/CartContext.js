@@ -21,6 +21,17 @@ export const CartContextProvider = ({children}) =>{
         const encontrado = cart.find(item => item.id === id );
         return encontrado?true:false
     }
+
+    const getImporteTotal = () =>{
+        return cart.map((item)=>{
+            let total =+ item.precio * item.cantidad
+
+
+            return item
+
+        })
+
+    }
     
     return (
         <Context.Provider value={{cart,agregarItem,eliminarItem,limpiarCart,existeEnCarrito}}>
