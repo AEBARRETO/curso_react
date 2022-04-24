@@ -7,11 +7,12 @@ import Contacto from "./Contacto";
 
 
 const Cart =()=>{
-    const  {cart,eliminarItem,limpiarCart} = useContext(CartContext)
+    const  {cart,eliminarItem,limpiarCart,getTotal} = useContext(CartContext)
     const [mostrar,setMostrar] = useState(false)
     const mostrarContacto = ()=>{
         setMostrar(true)
     }
+  
 
     return (
         <Container>
@@ -37,7 +38,14 @@ const Cart =()=>{
         {cart.map((e) => <CartItem eliminarItem={eliminarItem} key={e.id}  item={e}> </CartItem>)}
         </>: <div className="p-3 mb-2 bg-info text-center text-white"><h3>Sin Productos en el Carrito</h3></div>
         }
-        {mostrar&&<Contacto cart={cart} setMostrar={setMostrar}  />}
+
+        <Row className="showGrid">
+            <Col><b>Total</b></Col>
+            <Col></Col>
+            <Col><b>$ {getTotal()}</b></Col>
+        </Row>
+
+        {mostrar&&<Contacto setMostrar={setMostrar} />}
         </Container> 
     );
 

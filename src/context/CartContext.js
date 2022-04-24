@@ -1,4 +1,5 @@
 import { createContext,useState } from "react";
+import {crearOrden} from '../services/Cart';
 
 const Context = createContext()
 
@@ -22,19 +23,29 @@ export const CartContextProvider = ({children}) =>{
         return encontrado?true:false
     }
 
-    const getImporteTotal = () =>{
-        return cart.map((item)=>{
-            let total =+ item.precio * item.cantidad
-
-
-            return item
-
+    const getTotal = () =>{
+            let total = 0;
+        cart.forEach(item=>{
+            total += item.precio * item.seleccionado
         })
+        return total
+    }
 
+    const nuevaOrden=({cart, comprador})=>{
+        console.log(cart)
+        console.log(comprador)
+        const fecha = Date.now()
+        const total = getTotal()
+        const orden = {comprador,items:{cart}, fecha,total}
+
+        const idOrden = crearOrden(orden)
+        console.log(idOrden)
+
+       // limpiarCart()
     }
     
     return (
-        <Context.Provider value={{cart,agregarItem,eliminarItem,limpiarCart,existeEnCarrito}}>
+        <Context.Provider value={{cart,agregarItem,eliminarItem,limpiarCart,existeEnCarrito,getTotal,nuevaOrden}}>
             {children}
         </Context.Provider>
     )

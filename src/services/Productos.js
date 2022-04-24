@@ -1,5 +1,5 @@
 import { collection, getDoc, getDocs,doc, query, where } from "firebase/firestore";
-import fireStoreDB  from "./firebase"
+import fireStoreDB  from "./firebase";
 
 const colProductos = collection(fireStoreDB,'productos');
 
@@ -18,7 +18,6 @@ const colProductos = collection(fireStoreDB,'productos');
 
     let prods = [];
     await getDocs(q).then(querySnapShot =>{
-      console.log(querySnapShot.size)
        prods =  querySnapShot.docs.map(doc => {
           return {id: doc.id, ...doc.data()}
         })
