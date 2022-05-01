@@ -5,13 +5,11 @@ import {useParams} from 'react-router-dom';
 
 
 const ItemListContainer = ({saludo}) =>{
-  console.log('categoria')
   const [productos,setProductos] = useState([]);
   const {categoria} = useParams();
   useEffect(()=>{
     if(categoria){
       getProductosCategoria(categoria).then((products)=>{
-        console.log(products)
         setProductos(products) 
 
       });
