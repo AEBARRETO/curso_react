@@ -1,25 +1,32 @@
 
 import CartContext from "../context/CartContext";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
-import { Form,Modal, Button } from "react-bootstrap";
+import { Form,Modal, Button, Alert } from "react-bootstrap";
 
 
 const Contacto = ({ setMostrar}) =>{
     const  {cart,nuevaOrden} = useContext(CartContext)
-
+    const [showAlerta,setShowAlerta] = useState(false);
 
     const { register, handleSubmit } = useForm();
     const onSubmit = (comprador) => {
-        console.log(comprador);
-        nuevaOrden({cart,comprador})
+       
+       const id =  nuevaOrden({cart,comprador}) 
+       console.log(id)
+       setShowAlerta(true) 
+
     };
     return (<>
+           
             <Modal show={true} onHide={()=>setMostrar(false)} >
                 <Modal.Header closeButton>
                 <Modal.Title>Crear Orden de Compra</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
+                    <Alert  variant="success">
+                         Orden de Compra realizada.
+                    </Alert>
                     <Form onSubmit={handleSubmit(onSubmit)}>
                         <Form.Group className="mb-3" >
                             <Form.Label>Correo Electrónico</Form.Label>
@@ -40,6 +47,9 @@ const Contacto = ({ setMostrar}) =>{
                         </Form.Group>
                     </Form>
                 </Modal.Body>
+                <Modal.Footer>
+              
+                </Modal.Footer>
             </Modal>
             </>)
 }

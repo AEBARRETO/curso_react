@@ -36,15 +36,16 @@ const Cart =()=>{
         </Row>
           
         {cart.map((e) => <CartItem eliminarItem={eliminarItem} key={e.id}  item={e}> </CartItem>)}
-        </>: <div className="p-3 mb-2 bg-info text-center text-white"><h3>Sin Productos en el Carrito</h3></div>
-        }
-
         <Row className="showGrid">
             <Col><b>Total</b></Col>
             <Col></Col>
             <Col><b>$ {getTotal()}</b></Col>
         </Row>
 
+        </>: <div className="p-3 mb-2 bg-info text-center text-white"><h3>Sin Productos en el Carrito</h3></div>
+        }
+
+        
         {mostrar&&<Contacto setMostrar={setMostrar} />}
         </Container> 
     );

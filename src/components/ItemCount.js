@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { Button, Col,Row} from 'react-bootstrap';
+import { Button, Col,Row,} from 'react-bootstrap';
 
-const ItemCount = ({inicial=0,stock,onAdd}) =>{
+const ItemCount = ({stock,onAdd}) =>{
     const [count,setCount] = useState(0); 
     const increment = () =>{
         if(stock>count){
@@ -17,16 +17,15 @@ const ItemCount = ({inicial=0,stock,onAdd}) =>{
 
     return (
         <>
-            <Row  >
-                <Col style={{textAlign:"center", width: '18rem'}} >
-                    <Col><p>{count}</p></Col>
-                    <Col  >  
-                        <Button onClick={decrement}>-</Button>
-                        <Button onClick={increment}>+</Button>
-                    </Col>
-                </Col>  
+            <Row>
+                <Col className="justify-content-md-center d-flex">  
+                    <Button mr-3 onClick={decrement}>-</Button>
+                    <h4> {count} </h4>
+                    <Button onClick={increment}>+</Button>
+                </Col>
             </Row>
-            <Button onClick={()=>onAdd(count)}>Agregar a Carrito</Button>
+            
+            {count>0&&<Button onClick={()=>onAdd(count)}>Agregar a Carrito</Button>}
         </>
     );
 }

@@ -10,8 +10,13 @@ const ItemDetail = ({producto})=>{
   const [cantidad,setCantidad] = useState(0)
 
   const onAdd = (knt)=>{
-    setCantidad(knt);
-    agregarItem({...producto, 'seleccionado':knt})
+    if(knt>0){
+      setCantidad(knt)
+      agregarItem({...producto, 'seleccionado':knt})
+    }else{
+      console.log('cantidad igual a cero')
+    }
+    
   }
 
    return (  
@@ -20,14 +25,18 @@ const ItemDetail = ({producto})=>{
           <Row>
             <Col>
               <h2>{producto.nombre}</h2>
-              <Image src={producto.img}></Image>
+              <Image thumbnail src={producto.img}></Image>
             </Col>
           </Row>
           <Row> 
               <Col >
                 Categoría: {producto.categoria}
                 <h1>Price: $ {producto.precio}</h1>
-                {(cantidad===0&&!existeEnCarrito(producto.id))?<ItemCount inicial={1} stock={producto.stock} onAdd={onAdd}></ItemCount>:<Link className="btn btn-primary" to={'/cart'}>Ir al Carrito</Link>}
+                {
+                (cantidad===0&&!existeEnCarrito(producto.id))?
+                  <ItemCount inicial={1} stock={producto.stock} onAdd={onAdd}></ItemCount>:
+                  <Link className="btn btn-primary" to={'/cart'}>Ir al Carrito</Link>
+                  }
               </Col>
           </Row>
         </Col>

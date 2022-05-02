@@ -31,17 +31,18 @@ export const CartContextProvider = ({children}) =>{
         return total
     }
 
-    const nuevaOrden=({cart, comprador})=>{
+    const nuevaOrden= async ({cart, comprador})=>{
         console.log(cart)
         console.log(comprador)
         const fecha = Date.now()
         const total = getTotal()
         const orden = {comprador,items:{cart}, fecha,total}
 
-        const idOrden = crearOrden(orden)
+        const idOrden = await crearOrden(orden)
         console.log(idOrden)
 
-       // limpiarCart()
+        limpiarCart()
+        return idOrden
     }
     
     return (
