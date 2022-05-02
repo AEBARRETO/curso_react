@@ -2,9 +2,21 @@
 import {Navbar,Container,Nav,Image} from 'react-bootstrap'
 import CartWidget from './CartWidget';
 import { NavLink } from 'react-router-dom';
+import {getCategorias} from '../services/Categorias';
+import { useState, useEffect} from "react";
 
 
 const NavBar = () =>{
+    const [categorias, setCategorias] = useState([])
+    
+    useEffect(()=>{
+      getCategorias().then((cates)=>{
+        console.log(cates)
+        setCategorias(cates)
+      })
+    },[])
+
+
     return (
       <Navbar bg="dark" variant='dark' expand="lg">
         <Container>
@@ -12,10 +24,9 @@ const NavBar = () =>{
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav  className="mr-auto">
-              <NavLink to="/"                    className="nav-link">Inicio</NavLink>
-              <NavLink to="/categoria/Notebook"  className="nav-link">Notebook</NavLink>
-              <NavLink to="/categoria/Celular"   className="nav-link">Celulares</NavLink>
-              <NavLink to="/categoria/Tablet"    className="nav-link">Tablets</NavLink>
+              <NavLink to="/"className="nav-link">Inicio</NavLink>
+              {categorias&& categorias.map((item) =><NavLink key={item.id} to={"/categoria/"+item.nombre} className="nav-link">{item.nombre}</NavLink> )}
+
             </Nav>
             <CartWidget/>
           </Navbar.Collapse>

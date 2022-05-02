@@ -14,6 +14,7 @@ const colProductos = collection(fireStoreDB,'productos');
   }
 
   export const getProductosCategoria = async(categoria)=>{
+    console.log(categoria)
     const q = query (colProductos,where('categoria','==',categoria))
 
     let prods = [];
