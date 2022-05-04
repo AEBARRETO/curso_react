@@ -7,7 +7,6 @@ const colCatergorias = collection(fireStoreDB,'categorias');
     let cats = [];
     await getDocs(colCatergorias).then(querySnapShot =>{
         cats = querySnapShot.docs.map(doc => {
-            console.log(doc)
           return {id: doc.id, ...doc.data()}
         })
     })

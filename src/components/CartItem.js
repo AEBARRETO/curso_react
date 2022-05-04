@@ -8,8 +8,8 @@ const CartItem = ({item,eliminarItem}) =>{
             <Col>{item.nombre}</Col>
             <Col>{item.categoria}</Col>
             <Col>{item.seleccionado}</Col>
-            <Col>$ {item.precio}</Col>
-            <Col>$ {item.precio*item.seleccionado}</Col>
+            <Col>$ {item.precio.toLocaleString(undefined, { maximumFractionDigits: 2 })}</Col>
+            <Col>$ {(item.precio*item.seleccionado).toLocaleString(undefined, { maximumFractionDigits: 2 })}</Col>
             <Col className="text-right"  ><Button onClick={()=>eliminarItem(item.id)}><AiFillDelete fontSize="25px" /></Button></Col>
         </Row>
     )

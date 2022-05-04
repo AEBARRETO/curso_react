@@ -5,16 +5,16 @@ import { useForm } from "react-hook-form";
 import { Form,Modal, Button, Alert } from "react-bootstrap";
 
 
-const Contacto = ({ setMostrar}) =>{
+const Contacto =  ({ setMostrar}) =>{
     const  {cart,nuevaOrden} = useContext(CartContext)
-    const [showAlerta,setShowAlerta] = useState(false);
+    const [idOrden,setIdOrden] = useState('');
 
     const { register, handleSubmit } = useForm();
-    const onSubmit = (comprador) => {
+    const onSubmit =  async(comprador) => {
        
-       const id =  nuevaOrden({cart,comprador}) 
-       console.log(id)
-       setShowAlerta(true) 
+    const id =  await nuevaOrden({cart,comprador}) 
+    console.log('contacto: ' +id)
+    setIdOrden(id) 
 
     };
     return (<>
@@ -23,9 +23,9 @@ const Contacto = ({ setMostrar}) =>{
                 <Modal.Header closeButton>
                 <Modal.Title>Crear Orden de Compra</Modal.Title>
                 </Modal.Header>
-                <Modal.Body>
-                    <Alert  variant="success">
-                         Orden de Compra realizada.
+                <Modal.Body> 
+                    <Alert show={idOrden!==''} variant="success">
+                         Orden de Compra realizada. Nro: <b>{idOrden}</b>
                     </Alert>
                     <Form onSubmit={handleSubmit(onSubmit)}>
                         <Form.Group className="mb-3" >
@@ -40,10 +40,10 @@ const Contacto = ({ setMostrar}) =>{
                             <Form.Label>Teléfono</Form.Label>
                             <Form.Control type="phone" placeholder="3816299773" {...register("telefono")}/>
                         </Form.Group>
-                        <Form.Group className="mb-3"  >
+                        <Form.Group className="justify-content-md-center d-flex"  >
                             <Button variant="secondary" onClick={()=>setMostrar(false)}>Cerrar
                             </Button>
-                            <Button variant="primary" type="submit"> Guardar </Button>
+                           { idOrden===''&&<Button variant="primary" type="submit"> Crear </Button>}
                         </Form.Group>
                     </Form>
                 </Modal.Body>

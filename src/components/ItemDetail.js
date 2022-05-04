@@ -1,4 +1,4 @@
-import {Row,Col,Image} from "react-bootstrap";
+import {Row,Col,Card} from "react-bootstrap";
 import ItemCount from './ItemCount';
 import { useState, useContext } from "react";
 import CartContext from "../context/CartContext";
@@ -21,25 +21,24 @@ const ItemDetail = ({producto})=>{
 
    return (  
       <Row>
-        <Col style={{ textAlign: "center" }} >
-          <Row>
-            <Col>
-              <h2>{producto.nombre}</h2>
-              <Image thumbnail src={producto.img}></Image>
-            </Col>
-          </Row>
-          <Row> 
-              <Col >
-                Categoría: {producto.categoria}
-                <h1>Price: $ {producto.precio}</h1>
-                {
-                (cantidad===0&&!existeEnCarrito(producto.id))?
-                  <ItemCount inicial={1} stock={producto.stock} onAdd={onAdd}></ItemCount>:
-                  <Link className="btn btn-primary" to={'/cart'}>Ir al Carrito</Link>
-                  }
-              </Col>
-          </Row>
-        </Col>
+         <Col style={{ textAlign: "center" }} className="justify-content-md-center d-flex">  
+            <Card  style={{ width: '30rem'}}>
+                <Card.Header> <h3>{producto.nombre} </h3></Card.Header>
+                <Card.Img variant="top" src={producto.img} />
+                <Card.Body>
+                    <Card.Title>{producto.categoria}</Card.Title>      
+                    <Card.Text>Precio: $ {producto.precio}</Card.Text>
+                    {
+                    (cantidad===0&&!existeEnCarrito(producto.id))?
+                    <ItemCount inicial={1} stock={producto.stock} onAdd={onAdd}></ItemCount>:
+                    <Link className="btn btn-primary" to={'/cart'}>Ir al Carrito</Link> 
+                    }
+                    
+                </Card.Body>
+                <Card.Footer><Link className="btn btn-success" to={'/'}>Volver a Lista de Productos</Link> </Card.Footer>
+            </Card>  
+
+          </Col>
         </Row>
       );
 }

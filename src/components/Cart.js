@@ -39,7 +39,7 @@ const Cart =()=>{
         <Row className="showGrid">
             <Col><b>Total</b></Col>
             <Col></Col>
-            <Col><b>$ {getTotal()}</b></Col>
+            <Col><b>$ {getTotal().toLocaleString(undefined, { maximumFractionDigits: 2 })}</b></Col>
         </Row>
 
         </>: <div className="p-3 mb-2 bg-info text-center text-white"><h3>Sin Productos en el Carrito</h3></div>

@@ -11,7 +11,6 @@ const NavBar = () =>{
     
     useEffect(()=>{
       getCategorias().then((cates)=>{
-        console.log(cates)
         setCategorias(cates)
       })
     },[])

@@ -4,15 +4,15 @@ import { Link } from "react-router-dom";
 const Item = ({item}) =>{
     return(
         <Col>
-            <Card  style={{ width: '20rem' }}>
+            <Card  style={{ width: '20rem'}}>
                 <Card.Header>{item.categoria}</Card.Header>
                 <Card.Img variant="top" src={item.img} />
                 <Card.Body>
                     <Card.Title>{item.nombre}</Card.Title>      
                     <Card.Text>$ {item.precio}</Card.Text>
-                    <Link className="btn btn-primary" to={'/productos/detalle/'+item.id}>Ver detalle de Producto</Link>
+                    {item.stock>0&&<Link className="btn btn-primary" to={'/productos/detalle/'+item.id}>Ver detalle de Producto</Link>}
                 </Card.Body>
-                <Card.Footer>Stock Disponible {item.stock}</Card.Footer>
+                <Card.Footer>{item.stock>0?'Disponibles: ' + item.stock:'SIN STOCK'}</Card.Footer>
             </Card>  
         </Col>
     );

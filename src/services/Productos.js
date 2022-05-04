@@ -32,4 +32,4 @@ const colProductos = collection(fireStoreDB,'productos');
 
     return prod;
   }
-  
+
