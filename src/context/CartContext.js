@@ -37,7 +37,6 @@ export const CartContextProvider = ({children}) =>{
         const orden = {comprador,items:cart, fecha,total}
 
       const id =  await crearOrden(orden)
-      console.log('Orden Cread: ' + id)
       limpiarCart()
       return id
 

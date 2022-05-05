@@ -31,7 +31,6 @@ export const crearOrden = (orden) =>{
             }
         }).then((doc)=>{
             batch.commit()
-            console.log('cart service '+ doc.id)
             return doc.id
         }).catch((error)=>{
             if(error && error.nombre==='sinStock' && error.productos.length>0){
