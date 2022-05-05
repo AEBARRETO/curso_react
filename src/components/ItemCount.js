@@ -19,9 +19,9 @@ const ItemCount = ({stock,onAdd}) =>{
         <>
             <Row>
                 <Col className="justify-content-md-center d-flex">  
-                    <Button className="mr-3" onClick={decrement}>-</Button>
-                    <h4> {count} </h4>
-                    <Button onClick={increment}>+</Button>
+                    <Button className="ml-5" onClick={decrement}>-</Button>
+                   <h4> {count} </h4>
+                    <Button className="mr-5"onClick={increment}>+</Button>
                 </Col>
             </Row>
             

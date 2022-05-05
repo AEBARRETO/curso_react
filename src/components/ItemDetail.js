@@ -21,7 +21,7 @@ const ItemDetail = ({producto})=>{
 
    return (  
       <Row>
-         <Col style={{ textAlign: "center" }} className="justify-content-md-center d-flex">  
+         <Col style={{ textAlign: "center"}} className="justify-content-md-center d-flex">  
             <Card  style={{ width: '30rem'}}>
                 <Card.Header> <h3>{producto.nombre} </h3></Card.Header>
                 <Card.Img variant="top" src={producto.img} />
@@ -35,7 +35,7 @@ const ItemDetail = ({producto})=>{
                     }
                     
                 </Card.Body>
-                <Card.Footer><Link className="btn btn-success" to={'/'}>Volver a Lista de Productos</Link> </Card.Footer>
+                <Card.Footer><Link className="btn btn-secondary" to={'/'}>Volver a Lista de Productos</Link> </Card.Footer>
             </Card>  
 
           </Col>
